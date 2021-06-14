@@ -14,7 +14,7 @@
   there https://nlp.stanford.edu/projects/glove/
 - We want to download the 300d version as it is the most accurate and gives words "more" meaning
 - Then you should clone the project and install requirements.txt
-- After unzipping the GloVe file in project folder you should assign its name in 95th line into the 'path_to_glove_file'
+- After unzipping the GloVe file in project folder you should assign its name in 92nd line into the 'path_to_glove_file'
 - You are ready to go!
 
 ## Data Exploration
