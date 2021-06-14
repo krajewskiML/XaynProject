@@ -26,7 +26,7 @@ for record in all_records:
         record[key] = process_text(record[key])
 
 # CHECKING DATA SAMPLES
-
+print("First 3 datapoints look like this:")
 for record in all_records[:3]:
     print(record['name'])
     print(record['snippet'])
@@ -34,21 +34,19 @@ for record in all_records[:3]:
 
 # DATASET SIZE
 
-max_article_size = max([len((record['name'] + record['snippet']).split()) for record in all_records])
-print(f'max article size is: {max_article_size}')
+max_article_size = max([len((record['snippet']).split()) for record in all_records])
+print(f'max snippet size is: {max_article_size}')
 
 snippets_words_by_article = [record['snippet'].split() for record in all_records]
 flat_all_snippets_words = [item for sublist in snippets_words_by_article for item in sublist]
 name_words_by_article = [record['name'].split() for record in all_records]
 flat_all_names_words = [item for sublist in name_words_by_article for item in sublist]
 
-print(len(flat_all_snippets_words), len(flat_all_names_words))
-
 # TOPIC CATEGORIES
 
 topics = [record['topic'] for record in all_records]
 topics = set(topics)
-print(topics)
+print("these are the topics:", topics)
 topic_dict = {}
 topic_dict_sizes = {}
 for topic in topics:
@@ -67,9 +65,3 @@ sns.displot([len(word_list) for word_list in snippets_words_by_article]).set_tit
 plt.xlabel('number of words')
 plt.ylabel('number of articles')
 plt.show()
-
-# CORRECT LOAD CHECK
-
-file = open('unique_words.json', 'w')
-unique_words = list(set(flat_all_snippets_words))
-json.dump(unique_words, file)
